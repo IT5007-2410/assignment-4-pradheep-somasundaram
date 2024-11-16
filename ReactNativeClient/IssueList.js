@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-reanimated-table';
-
 import {
   SafeAreaView,
   ScrollView,
@@ -13,6 +12,7 @@ import {
   View,
   Alert,
 } from 'react-native';
+
 
 const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
 
@@ -52,7 +52,7 @@ class IssueFilter extends React.Component {
   render() {
     return (
       <>
-        {/****** Q1: Start Coding here. ******/}        
+        {/****** Q1: Start Coding here. ******/}
         <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'darkblue', backgroundColor: '#F5FCFF', textAlign: 'center', marginTop: 5 }}>
           Issue Filter Table
         </Text>
@@ -69,12 +69,12 @@ const styles = StyleSheet.create({
   header: { height: 50, backgroundColor: '#537791' },
   smallHeader: { height: 30, backgroundColor: '#537791' },
   smallHeaderText: { textAlign: 'center', color: '#FFF', fontWeight: 'bold', fontSize: 12 },
-  text: { textAlign: 'left',  color: '#FFF', fontWeight: 'bold', fontSize: 16 },
+  text: { textAlign: 'left', color: '#FFF', fontWeight: 'bold', fontSize: 16 },
   dataWrapper: { marginTop: -1 },
   row: { height: 40, backgroundColor: '#E7E6E1' }
 });
 
-const width= [40,80,80,80,80,80,200];
+const width = [40, 80, 80, 80, 80, 80, 200];
 
 function IssueRow(props) {
   const issue = props.issue;
@@ -100,7 +100,7 @@ function IssueTable(props) {
   );
 
   {/****** Q2: Start Coding here. Add Logic to initalize table header  ******/}
-  const header = ["ID", "TITLE", "STATUS", "OWNER", "CREATED", "EFFORT", "DUE"]  
+  const header = ["ID", "TITLE", "STATUS", "OWNER", "CREATED", "EFFORT", "DUE"]
   {/****** Q2: Coding Ends here. ******/}
 
 
@@ -109,7 +109,7 @@ function IssueTable(props) {
       <ScrollView>
         {/****** Q2: Start Coding here to render the table header/rows.**********/}
         <Table>
-        <Row data={header} style={styles.smallHeader} textStyle={styles.smallHeaderText} />          
+          <Row data={header} style={styles.smallHeader} textStyle={styles.smallHeaderText} />
           {issueRows}
         </Table>
       </ScrollView>
@@ -123,7 +123,7 @@ class IssueAdd extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
-    /****** Q3: Start Coding here. Create State to hold inputs******/    
+    /****** Q3: Start Coding here. Create State to hold inputs******/
     this.state = { owner: '', effort: '', title: '' };
     /****** Q3: Code Ends here. ******/
   }
@@ -141,7 +141,7 @@ class IssueAdd extends React.Component {
   /****** Q3: Code Ends here. ******/
 
   handleSubmit() {
-    /****** Q3: Start Coding here. Create an issue from state variables and call createIssue. Also, clear input field in front-end******/  
+    /****** Q3: Start Coding here. Create an issue from state variables and call createIssue. Also, clear input field in front-end******/
     const newIssue = { "owner": this.state.owner.trim(), "effort": this.state.effort.trim(), "title": this.state.title.trim(), due: "" }
     /****** Q3: Code Ends here. ******/
 
@@ -290,21 +290,21 @@ export default class IssueList extends React.Component {
   render() {
     return (
       <>
-        {/****** Q1: Start Coding here. ******/}        
+        {/****** Q1: Start Coding here. ******/}
         <IssueFilter />
         {/****** Q1: Code ends here ******/}
 
 
-        {/****** Q2: Start Coding here. ******/}        
+        {/****** Q2: Start Coding here. ******/}
         <IssueTable issues={this.state.issues}></IssueTable>
         {/****** Q2: Code ends here ******/}
 
 
-        {/****** Q3: Start Coding here. ******/}        
+        {/****** Q3: Start Coding here. ******/}
         <IssueAdd createIssue={this.createIssue} />
         {/****** Q3: Code Ends here. ******/}
 
-        {/****** Q4: Start Coding here. ******/}        
+        {/****** Q4: Start Coding here. ******/}
         <BlackList />
         {/****** Q4: Code Ends here. ******/}
       </>
